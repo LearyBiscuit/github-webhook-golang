@@ -45,3 +45,12 @@ func filterHandle(eventType string, f HandlerFunc) http.HandlerFunc {
 func HandlePush(f HandlerFunc) http.HandlerFunc {
 	return filterHandle("push", f)
 }
+
+// HandlePullRequest generates http.HandlerFunc to handle webhook pull request events.
+func HandlePullRequest(f HandlerFunc) http.HandlerFunc {
+	return filterHandle("pull_request", f)
+}
+
+func HandleHook(f HandlerFunc) http.HandlerFunc {
+	
+}
