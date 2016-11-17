@@ -13,19 +13,20 @@ func main() {
 
 	http.HandleFunc("/", webhook.HandleHook(func(ev *webhook.Event) {
 		// ev.Header.EventType contains webhook event type
-		switch ev.Header.EventType {
-			case "push": 
-				push := ev.PushEvent()
-				if push == nil {
-					return
-				}
-				log.Printf("push: verified=%v %#v", ev.Verified, push)
-			case "pull_request":
-				pull_request := ev.PullRequest()
-				if pull_request == nil {
-					return
-				}
-				log.Printf("pull_request: verified=%v %#v", ev.Verified, pull_request)
+		log.Printf("The Github event type is %v", ev.Header.EventType)
+		// switch ev.Header.EventType {
+		// 	case "push": 
+		// 		push := ev.PushEvent()
+		// 		if push == nil {
+		// 			return
+		// 		}
+		// 		log.Printf("push: verified=%v %#v", ev.Verified, push)
+		// 	case "pull_request":
+		// 		pull_request := ev.PullRequest()
+		// 		if pull_request == nil {
+		// 			return
+		// 		}
+		// 		log.Printf("pull_request: verified=%v %#v", ev.Verified, pull_request)
 
 		}
 	}))

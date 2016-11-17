@@ -51,6 +51,14 @@ func HandlePullRequest(f HandlerFunc) http.HandlerFunc {
 	return filterHandle("pull_request", f)
 }
 
-func HandleHook(f HandlerFunc) http.HandlerFunc {
-	
+func HandleHook(ev *Event, f HandlerFunc) http.HandlerFunc {
+	eventType := ev.Header.EventType
+	switch eventType {
+		case "push":
+			return HandlePullRequest(f)
+		case "pull_request":
+			return HandlePush(f)
+		default:
+			return nil
+	}
 }
