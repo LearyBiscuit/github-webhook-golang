@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/koron/go-github-webhook"
+	"github.com/LearyBiscuit/github-webhook-golang"
 )
 
 func main() {
